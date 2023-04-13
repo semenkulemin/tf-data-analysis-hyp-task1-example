@@ -14,8 +14,13 @@ def solution(x_success: int,
     # Не меняйте название функции и её аргументы
 #     z_score, p_value = proportions_ztest([x_success, y_success], [x_cnt, y_cnt], alternative='larger')
 #     return p_value < 0.1
-    alpha = 0.1
-    u = stats.norm.ppf((1-alpha)/2+0.5)
-    px = x_success / x_cnt
-    py = y_success / y_cnt
-    return py < px - u * np.sqrt(px * (1 - px) / x_cnt)
+#     alpha = 0.1
+#     u = stats.norm.ppf((1-alpha)/2+0.5)
+#     px = x_success / x_cnt
+#     py = y_success / y_cnt
+#     return py < px - u * np.sqrt(px * (1 - px) / x_cnt)
+    _,p_val = proportions_ztest([x_success,y_success],[x_cnt,y_cnt], alternative = 'smaller')
+    if p_val > sgn_lvl:
+        return False
+    else:
+        return True 
