@@ -11,4 +11,5 @@ def solution(x_success: int,
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    z_score, p_value = proportions_ztest([x_success, y_success], [x_cnt, y_cnt], alternative='larger')
+    return p_value < 0.08
